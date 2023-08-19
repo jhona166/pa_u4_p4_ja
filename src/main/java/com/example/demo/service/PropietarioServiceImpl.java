@@ -2,15 +2,17 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.demo.repository.IPropietarioRepository;
 import com.example.demo.repository.modelo.Propietario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
-
+@Service
 
 public class PropietarioServiceImpl implements IPropietarioService {
+	@Autowired
 	private IPropietarioRepository iPropietarioRepository;
 	@Override
 	public Propietario buscarPorId(Integer id) {

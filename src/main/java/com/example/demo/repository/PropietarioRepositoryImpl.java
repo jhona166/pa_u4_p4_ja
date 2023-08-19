@@ -41,14 +41,16 @@ public class PropietarioRepositoryImpl implements IPropietarioRepository {
 	@Transactional(value=TxType.MANDATORY)
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
-		this.entityManager.remove(this.buscarPorId(id));
+		Propietario propietario = this.buscarPorId(id);
+		
+		this.entityManager.remove(propietario);
 	}
 
 	@Override
 	@Transactional(value=TxType.NOT_SUPPORTED)
 	public List<Propietario> buscarTodos() {
 		// TODO Auto-generated method stub
-		TypedQuery<Propietario> myQuery = this.entityManager.createQuery("Select p From Propietario p",Propietario.class);
+		TypedQuery<Propietario> myQuery = this.entityManager.createQuery("SELECT p FROM Propietario p",Propietario.class);
 		return myQuery.getResultList();
 	}
 
