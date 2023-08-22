@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.IPropietarioRepository;
 import com.example.demo.repository.modelo.Propietario;
 
+import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
+
 
 @Service
 
@@ -21,18 +24,21 @@ public class PropietarioServiceImpl implements IPropietarioService {
 	}
 
 	@Override
+	@Transactional(value=TxType.REQUIRED)
 	public void guardar(Propietario propietario) {
 		// TODO Auto-generated method stub
 		this.iPropietarioRepository.insertar(propietario);
 	}
 
 	@Override
+	@Transactional(value=TxType.REQUIRED)
 	public void actualizar(Propietario propietario) {
 		// TODO Auto-generated method stub
 		this.iPropietarioRepository.actualizar(propietario);
 	}
 
 	@Override
+	@Transactional(value=TxType.REQUIRED)
 	public void borrar(Integer id) {
 		// TODO Auto-generated method stub
 		this.iPropietarioRepository.eliminar(id);
